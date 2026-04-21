@@ -1,0 +1,2 @@
+ssh -o PreferredAuthentications=bidzon123$$ -o PubkeyAuthentication=no bidzonuser@49.12.201.167
+# Password: bidzon123$$
