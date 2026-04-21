@@ -20,13 +20,14 @@ const auctionDuration = new Trend('auction_list_duration', true);
 
 const BASE_URL        = 'http://49.12.201.167/api';
 const SOCKET_URL      = 'http://49.12.201.167';
-const MACHINE_ID      = 5;
+const MACHINE_ID      = 6;
 const VU_END          = 2000;
 const BIDDER_PASSWORD = 'Test@123';
 const SELLER_EMAIL    = 'john@example.com';
 const SELLER_PASS     = 'SecurePass123';
 
 export const options = {
+  setupTimeout: '20m',
   scenarios: {
     bidder_scenario: {
       executor: 'ramping-vus',
@@ -99,7 +100,7 @@ export function setup() {
     } else if (body.message && body.message.includes('already exists')) {
       bidders.push({ id: null, email, password: BIDDER_PASSWORD });
     }
-    if (i % 100 === 0) { console.log(`[Machine ${MACHINE_ID}] ${i}/${VU_END} accounts ready`); sleep(0.5); }
+    if (i % 200 === 0) { console.log(`[Machine ${MACHINE_ID}] ${i}/${VU_END} accounts ready`); sleep(0.2); }
   }
 
   // Get or create auctions
